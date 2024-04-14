@@ -2,8 +2,14 @@ name: Build and Push Multi-Platform Docker Image
 
 on:
   push:
-    tags:
-       - '*'
+    branches:
+      - main
+      - feature/CF-002-github-action
+
+#on:
+#  push:
+#    tags:
+#       - '*'
 
 jobs:
   build:
