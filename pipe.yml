@@ -1,0 +1,27 @@
+name: Cloudflare purge cache
+image: originix/cloudflare-purge-cache:0.1.0
+description: Purge cache your Cloudflare to refresh caches
+category: Deployment
+variables:
+  - name: CF_API_KEY
+    default: "$CF_API_KEY"
+  - name: CF_ZONE_ID
+    default: "$CF_ZONE_ID"
+  - name: PURGE_EVERYTHING
+    default: "false"
+  - name: FILES
+  - name: TAGS
+  - name: HOSTS
+  - name: PREFIXES
+  - name: DEBUG
+    default: "false"
+
+repository: https://github.com/originix/cloudflare-purge-cache
+vendor:
+  name: Cloudflare
+  website: https://cloudflare.com/
+maintainer:
+  name: Originix
+tags:
+    - cloudflare
+    - purge-cache
