@@ -1,0 +1,39 @@
+name: Build and Push Multi-Platform Docker Image
+
+on:
+  push:
+    tags:
+       - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Get latest tag
+        id: get_tag
+        run: echo "::set-output name=TAG::$(git describe --abbrev=0 --tags)"
+
+#      - name: Increment version
+#        id: increment_version
+#        run: echo "::set-output name=NEW_TAG::$(echo "${{ steps.get_tag.outputs.TAG }}" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')"
+#
+#      - name: Build Docker image
+#        run: |
+#          docker buildx build \
+#            --platform linux/amd64,linux/arm64,linux/arm/v7 \
+#            -t originix/cloudflare-purge-cache:${{ steps.increment_version.outputs.NEW_TAG }} \
+#            -t originix/cloudflare-purge-cache:latest \
+#            --push .
