@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - origin/feature/CF-003-docs
 
 jobs:
   build:
@@ -29,3 +30,10 @@ jobs:
             -t originix/cloudflare-purge-cache:0.1.0 \
             -t originix/cloudflare-purge-cache:latest \
             --push .
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: originix/cloudflare-purge-cache
