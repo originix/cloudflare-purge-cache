@@ -105,6 +105,15 @@ script:
       PREFIXES: 'example.com/media/* api.example.com/users/*'
 ```
 
+## Using the Docker image independently 
+```shell
+ docker run \
+   -e CF_API_KEY="$CF_API_KEY" \
+   -e CF_ZONE_ID="$CF_ZONE_ID" \
+   -e PURGE_EVERYTHING="true" \
+   originix/cloudflare-purge-cache:0.1.0
+```
+
 
 ## Support
 
