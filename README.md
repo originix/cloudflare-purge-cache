@@ -1,5 +1,6 @@
 # Bitbucket Pipelines Pipe: Cloudflare Cache Purge
 
+[![Git Hub](https://img.shields.io/badge/Git-Hub-green.svg)](https://github.com/originix/cloudflare-purge-cache)
 [![Docker Hub](https://img.shields.io/badge/Docker-Hub-blue.svg)](https://hub.docker.com/r/originix/cloudflare-purge-cache)
 
 
@@ -10,7 +11,7 @@ This Bitbucket Pipelines pipe allows you to request a cache purge of your Cloudf
 Add the following snippet to the script section of your `bitbucket-pipelines.yml` file:
 
 ```yaml
-- pipe: atlassian/aws-cloudfront-invalidate:0.10.0
+- pipe: docker://originix/cloudflare-purge-cache:0.1.0
   variables:
     CF_API_KEY: '<string>' # required
     CF_ZONE_ID: '<string>' # required
@@ -102,6 +103,15 @@ script:
       CF_API_KEY: $CF_API_KEY
       CF_ZONE_ID: $CF_ZONE_ID
       PREFIXES: 'example.com/media/* api.example.com/users/*'
+```
+
+## Using the Docker image independently 
+```shell
+ docker run \
+   -e CF_API_KEY="$CF_API_KEY" \
+   -e CF_ZONE_ID="$CF_ZONE_ID" \
+   -e PURGE_EVERYTHING="true" \
+   originix/cloudflare-purge-cache:0.1.0
 ```
 
 
