@@ -1,6 +1,6 @@
 # Bitbucket Pipelines Pipe: Cloudflare Cache Purge
 
-[![Git Hub](https://img.shields.io/badge/git-hub-green.svg)](https://github.com/originix/cloudflare-purge-cache)
+[![Git Hub](https://img.shields.io/badge/Git-Hub-green.svg)](https://github.com/originix/cloudflare-purge-cache)
 [![Docker Hub](https://img.shields.io/badge/Docker-Hub-blue.svg)](https://hub.docker.com/r/originix/cloudflare-purge-cache)
 
 
