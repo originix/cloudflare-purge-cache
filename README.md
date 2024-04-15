@@ -10,7 +10,7 @@ This Bitbucket Pipelines pipe allows you to request a cache purge of your Cloudf
 Add the following snippet to the script section of your `bitbucket-pipelines.yml` file:
 
 ```yaml
-- pipe: atlassian/aws-cloudfront-invalidate:0.10.0
+- pipe: docker://originix/cloudflare-purge-cache:0.1.0
   variables:
     CF_API_KEY: '<string>' # required
     CF_ZONE_ID: '<string>' # required
