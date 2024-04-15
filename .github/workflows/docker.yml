@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - origin/feature/CF-003-docs
+      - feature/CF-003-docs
 
 jobs:
   build:
